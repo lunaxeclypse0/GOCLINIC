@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoClinic Diagnostic and Specialty Center</title>
+    <link rel="icon" type="image/png" href="images/logo1.jpg"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1978438655573991" nonce="2jpccXO2"></script>
+</head>
+
+<body>
+  <header>
+    <div class="info-bar">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/mainlogo1-removebg-preview.png" alt="Clinic Logo"/>
+        </a>
+      </div>
+
+      <div class="clinic-hours">
+        <h3><i class="fa-regular fa-clock"></i> Clinic Hours</h3>
+        <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+        <p>Sat: 9:00 AM - 1:00 PM</p>
+      </div>
+
+      <div class="address">
+        <h3><i class="fa-solid fa-location-dot"></i> Address</h3>
+        <p>Margimel Building, National Highway, Brgy. Halang, Calamba, Laguna Philippines, 4027</p>
+        <p>(Behind Yellow Cab Restaurant)</p>
+      </div>
+
+      <div class="contact">
+        <h3><i class="fa-solid fa-phone"></i> Contact</h3>
+        <div class="contact-item">
+          <p>Call Us: <a href="tel:09198611327">0919 861 1327</a></p>
+        </div>
+        <div class="contact-item">
+          <p>Follow Us: <a href="https://www.facebook.com/GoClinicDSC" target="_blank" rel="noopener">GoClinicDSC</a></p>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <!-- Hamburger Icon -->
+            <div class="menu-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul id="menu">
+                <li><a href="index.html">HOME</a></li>
+                <li class="dropdown">
+                    <a href="about.us.html">ABOUT US</a>
+                    <button onclick="toggleDropdown(event)">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <ul class="dropdown-content" id="about-dropdown">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="mission.vision.html">Mission & Vision</a></li>
+                        <li><a href="https://www.facebook.com/GoClinicDSC" target="_blank">Facebook Page</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="doctors.html">DOCTORS</a></li>
+                <li><a href="patient&guest.html">PATIENT & GUESTS</a></li>
+                <li><a href="hmos.html">HMO'S</a></li>
+                <li><a href="news&updates.html">NEWS</a></li>
+                <li><a href="contact.us.html">CONTACT US</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="menu-backdrop"></div>
+
+    <section class="hero-section">
+      <div class="hero-overlay"><h1>News & Updates</h1></div>
+    </section>
+  </header>
+
+  <main>
+    <section class="latest-news">
+    <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" 
+                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0">
+            </script>
+      <div class="news-header">
+        <div class="news-badge"><i class="fas fa-bullhorn"></i><span>News & Updates</span></div>
+        <p class="news-subtitle">Latest videos and announcements from GoClinic</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/434457435860001" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Shedding Light on Diabetes Awareness</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/736745658649872" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Special Diabetes Care Program</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/429872569629506" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">APAS Awareness — Part 3</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/410620161899005" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Heat Stroke Awareness</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/309153085561754" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">APAS Awareness — Part 2</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/399051266430926" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Hypertension Awareness — Part 1</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/951576796707499" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Hypertension Awareness — Part 2</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/350059504712921" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Dyslipidemia & High Cholesterol</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/802868861763257" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">APAS Awareness — Part 1</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/963868455269663" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Pediatric Vaccination</h3>
+        </div>
+
+        <div class="news-card">
+          <div class="video-box">
+            <div class="fb-video" data-href="https://www.facebook.com/GoClinicDSC/videos/977896483714025" data-width="500" data-show-text="false"></div>
+          </div>
+          <h3 class="news-title">Explore Your Go‑to Healthcare Facility</h3>
+        </div>
+      </div>
+
+        <div class="button-container">
+        <a
+            href="https://www.facebook.com/GoClinicDSC"
+            class="watch-more-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Watch More on Facebook
+        </a>
+        </div>
+    </section>
+
+
+
+<!-- Events Section - Premium Design -->
+<section class="events-section-premium">
+  <div class="events-container">
+    <!-- Section Header -->
+    <div class="section-header-glass">
+      <div class="section-badge-premium">
+        <i class="fas fa-calendar-alt"></i>
+        <span>GoClinic Events</span>
+      </div>
+      <h1 class="section-title-main">Our Community Events</h1>
+      <p class="section-subtitle-premium">Celebrating moments of care, compassion, and community health</p>
+    </div>
+
+
+    <!-- BAHAY NI MARIA EVENT -->
+    <div class="event-block">
+      <div class="event-header-premium">
+        <div class="event-meta">
+          <span class="event-badge-glass">Event</span>
+          <span class="event-date-glass">
+            <i class="far fa-calendar"></i> 2025
+          </span>
+        </div>
+        <h2 class="event-title-premium">Bahay ni Maria</h2>
+        <p class="event-description">Supporting our community through compassionate healthcare services and meaningful connections</p>
+      </div>
+      
+      <div class="gallery-featured">
+        <!-- Featured Large Image -->
+        <div class="gallery-item-featured" onclick="openLightbox('bahay1', 0)">
+          <img src="bahaynimaria/1.png" alt="Bahay ni Maria 1">
+          <div class="image-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        
+        <!-- Standard 3x3 Grid -->
+        <div class="gallery-grid-small">
+          <div class="gallery-item" onclick="openLightbox('bahay1', 1)">
+            <img src="bahaynimaria/2.png" alt="Bahay ni Maria 2">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 2)">
+            <img src="bahaynimaria/3.png" alt="Bahay ni Maria 3">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 3)">
+            <img src="bahaynimaria/4.png" alt="Bahay ni Maria 4">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 4)">
+            <img src="bahaynimaria/5.png" alt="Bahay ni Maria 5">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 5)">
+            <img src="bahaynimaria/6.png" alt="Bahay ni Maria 6">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 6)">
+            <img src="bahaynimaria/7.png" alt="Bahay ni Maria 7">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 7)">
+            <img src="bahaynimaria/8.png" alt="Bahay ni Maria 8">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 8)">
+            <img src="bahaynimaria/9.png" alt="Bahay ni Maria 9">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('bahay1', 9)">
+            <img src="bahaynimaria/10.png" alt="Bahay ni Maria 10">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- DRA. ALICANDO LETRAN TALK -->
+    <div class="event-block">
+      <div class="event-header-premium">
+        <div class="event-meta">
+          <span class="event-badge-glass">Event</span>
+          <span class="event-date-glass">
+            <i class="far fa-calendar"></i> 2025
+          </span>
+        </div>
+        <h2 class="event-title-premium">Dra. Alicando Letran Talk</h2>
+        <p class="event-description">Empowering healthcare professionals through knowledge sharing and excellence in medical practice</p>
+      </div>
+      
+      <div class="gallery-featured">
+        <!-- Featured Large Image -->
+        <div class="gallery-item-featured" onclick="openLightbox('dra', 0)">
+          <img src="letrantalk/1.png" alt="Dra. Alicando 1">
+          <div class="image-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        
+        <!-- Custom 2-2-1 Grid for Letran Talk -->
+        <div class="gallery-grid-221">
+          <div class="gallery-item" onclick="openLightbox('dra', 1)">
+            <img src="letrantalk/2.png" alt="Dra. Alicando 2">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('dra', 2)">
+            <img src="letrantalk/3.png" alt="Dra. Alicando 3">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('dra', 3)">
+            <img src="letrantalk/4.png" alt="Dra. Alicando 4">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('dra', 4)">
+            <img src="letrantalk/5.png" alt="Dra. Alicando 5">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item gallery-item-full" onclick="openLightbox('dra', 5)">
+            <img src="letrantalk/6.png" alt="Dra. Alicando 6">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- MEDICAL MISSION -->
+    <div class="event-block">
+      <div class="event-header-premium">
+        <div class="event-meta">
+          <span class="event-badge-glass">Event</span>
+          <span class="event-date-glass">
+            <i class="far fa-calendar"></i> 2025
+          </span>
+        </div>
+        <h2 class="event-title-premium">Medical Mission</h2>
+        <p class="event-description">Bringing quality healthcare to underserved communities through dedicated medical outreach programs</p>
+      </div>
+      
+      <div class="gallery-featured">
+        <!-- Featured Large Image -->
+        <div class="gallery-item-featured" onclick="openLightbox('medical', 0)">
+          <img src="medicalmission/1.png" alt="Medical Mission 1">
+          <div class="image-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        
+        <!-- Standard 3x3 Grid -->
+        <div class="gallery-grid-small">
+          <div class="gallery-item" onclick="openLightbox('medical', 1)">
+            <img src="medicalmission/2.png" alt="Medical Mission 2">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 2)">
+            <img src="medicalmission/3.png" alt="Medical Mission 3">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 3)">
+            <img src="medicalmission/4.png" alt="Medical Mission 4">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 4)">
+            <img src="medicalmission/5.png" alt="Medical Mission 5">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 5)">
+            <img src="medicalmission/6.png" alt="Medical Mission 6">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 6)">
+            <img src="medicalmission/7.png" alt="Medical Mission 7">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 7)">
+            <img src="medicalmission/8.png" alt="Medical Mission 8">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 8)">
+            <img src="medicalmission/9.png" alt="Medical Mission 9">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 9)">
+            <img src="medicalmission/10.png" alt="Medical Mission 10">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 10)">
+            <img src="medicalmission/11.png" alt="Medical Mission 11">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 11)">
+            <img src="medicalmission/12.png" alt="Medical Mission 12">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('medical', 12)">
+            <img src="medicalmission/13.png" alt="Medical Mission 13">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PHILCARE -->
+    <div class="event-block">
+      <div class="event-header-premium">
+        <div class="event-meta">
+          <span class="event-badge-glass">Event</span>
+          <span class="event-date-glass">
+            <i class="far fa-calendar"></i> 2025
+          </span>
+        </div>
+        <h2 class="event-title-premium">Philcare</h2>
+        <p class="event-description">Strengthening healthcare partnerships to provide better services and wider coverage for our patients</p>
+      </div>
+      
+      <div class="gallery-featured">
+        <!-- Featured Large Image -->
+        <div class="gallery-item-featured" onclick="openLightbox('philcare', 0)">
+          <img src="philcare/1.png" alt="Philcare 1">
+          <div class="image-overlay">
+            <i class="fas fa-search-plus"></i>
+          </div>
+        </div>
+        
+        <!-- Custom 1-1-1 Grid for Philcare -->
+        <div class="gallery-grid-111">
+          <div class="gallery-item" onclick="openLightbox('philcare', 1)">
+            <img src="philcare/2.png" alt="Philcare 2">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('philcare', 2)">
+            <img src="philcare/3.png" alt="Philcare 3">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('philcare', 3)">
+            <img src="philcare/4.png" alt="Philcare 4">
+            <div class="image-overlay">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Premium Lightbox Modal (Same as before) -->
+<div id="lightbox-premium" class="lightbox-premium">
+  <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+  
+  <div class="lightbox-content-premium">
+    <button class="lightbox-close-premium" onclick="closeLightbox()">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="lightbox-main">
+      <button class="lightbox-nav-premium prev" onclick="changeImage(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <div class="lightbox-image-wrapper">
+        <img id="lightbox-img-premium" src="" alt="">
+        <div class="lightbox-info-glass">
+          <span id="lightbox-counter">1 / 10</span>
+        </div>
+      </div>
+      
+      <button class="lightbox-nav-premium next" onclick="changeImage(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+    <div class="lightbox-thumbnails-premium" id="lightbox-thumbs"></div>
+  </div>
+</div>
+
+
+
+<!-- HMO Partners Section -->
+<section class="hmo-partners-section">
+    <div class="hmo-container">
+        <!-- Header -->
+        <div class="hmo-header">
+            <div class="hmo-badge">
+                <i class="fas fa-handshake"></i>
+                <span>Accredited HMO Partners</span>
+            </div>
+        </div>
+
+        <!-- Logos Slider -->
+        <div class="hmo-slider">
+            <div class="hmo-track">
+                <!-- First Set -->
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
+
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
+            </div>
+        </div>
+    </div>
+</section>
+  </main>
+
+<footer class="footer">
+    <div class="container">
+        <!-- Information Section -->
+        <div class="footer-info">
+            <img src="images/footerlogo.png" alt="GoClinic Logo" class="footer-logo">
+            
+            <h3>Information</h3>
+            <p>
+                <i class="fas fa-phone"></i> 
+                <a href="tel:09198611327">0919 861 1327</a>
+            </p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=GoClinic+Margimel+Building,+National+Highway,+Brgy.+Halang,+Calamba,+Laguna,+Philippines,+4027" target="_blank">
+                    Margimel Building, National Highway<br>
+                    Brgy. Halang, Calamba, Laguna 4027
+                </a>
+            </p>
+            
+            <h3>Follow Us</h3>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/GoClinicDSC" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/GoClinicCalamba" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="footer-services">
+            <h3><a href="about.us.html">About Us</a></h3>
+            <ul>
+                <li><a href="history.html">History</a></li>
+                <li><a href="mission.vision.html">Mission & Vision</a></li>
+                <li><a href="https://www.facebook.com/GoClinicDSC" target="_blank">Facebook Page</a></li>
+            </ul>
+        </div>
+
+        <!-- Services Section -->
+        <div class="footer-quick-menu">
+            <h3><a href="services.html">Services</a></h3>
+            <ul>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="patient&guest.html">Patient & Guests</a></li>
+                <li><a href="hmos.html">HMO's</a></li>
+                <li><a href="news&updates.html">News</a></li>
+                <li><a href="contact.us.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="footer-emergency">
+            <h3>Contact Details</h3>
+            <p>
+                <i class="fas fa-clinic-medical"></i> 
+                Monday - Saturday<br>6:00 AM - 6:00 PM
+            </p>
+            <p>
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:calamba.goclinic@gmail.com">calamba.goclinic@gmail.com</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <p>© 2025 GoClinic. All Rights Reserved</p>
+    </div>
+</footer>
+
+
+  <script>
+    function toggleMenu(){ document.getElementById('menu').classList.toggle('active'); }
+    function toggleDropdown(e){ e.preventDefault(); document.getElementById('about-dropdown').classList.toggle('active'); }
+    window.onclick = function(e){
+      const d = document.getElementById('about-dropdown');
+      if (!e.target.matches('.dropdown a') && d.classList.contains('active')) d.classList.remove('active');
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

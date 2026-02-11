@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoClinic Diagnostic and Specialty Center</title>
+    <link rel="icon" type="image/png" href="images/logo1.jpg"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1978438655573991" nonce="2jpccXO2"></script>
+</head>
+
+<body>
+<header>
+    <div class="info-bar">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="index.html">
+        <img src="images/mainlogo1-removebg-preview.png" alt="Clinic Logo">
+        </a>
+    </div>
+
+    <!-- Clinic Hours -->
+    <div class="clinic-hours">
+      <h3><i class="fa-regular fa-clock"></i> Clinic Hours</h3>
+      <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+      <p>Sat: 9:00 AM - 1:00 PM</p>
+    </div>
+
+    <!-- Address -->
+    <div class="address">
+      <h3><i class="fa-solid fa-location-dot"></i> Address</h3>
+      <p>Margimel Building, National Highway, Brgy. Halang, Calamba, Laguna Philippines, 4027</p>
+      <p>(Behind Yellow Cab Restaurant)</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact">
+    <h3><i class="fa-solid fa-phone"></i> Contact</h3> <!-- FIXED -->
+
+    <div class="contact-item">
+        <p>Call Us: <a href="tel:09198611327">0919 861 1327</a></p>
+    </div>
+
+    <div class="contact-item">
+        <p>Follow Us: <a href="https://www.facebook.com/GoClinicDSC" target="_blank">GoClinicDSC</a></p>
+    </div>
+    </div>
+</header>
+<nav>
+    <div class="nav-container">
+        <!-- Hamburger Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul id="menu">
+            <li><a href="index.html">HOME</a></li>
+            <li class="dropdown">
+                <a href="about.us.html">ABOUT US</a>
+                <button onclick="toggleDropdown(event)">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <ul class="dropdown-content" id="about-dropdown">
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="mission.vision.html">Mission & Vision</a></li>
+                    <li><a href="https://www.facebook.com/GoClinicDSC" target="_blank">Facebook Page</a></li>
+                </ul>
+            </li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="doctors.html">DOCTORS</a></li>
+            <li><a href="patient&guest.html">PATIENT & GUESTS</a></li>
+            <li><a href="hmos.html">HMO'S</a></li>
+            <li><a href="news&updates.html">NEWS</a></li>
+            <li><a href="contact.us.html">CONTACT US</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="menu-backdrop"></div>
+
+    
+        <!-- Section with background image -->
+        <section class="hero-section">
+            <div class="hero-overlay">
+                <h1>Clinic Packages</h1>
+            </div>
+        </section>
+
+    </header>
+
+<body>
+    <section class="packages-section">
+        <div class="packages-grid">
+            <!-- 1. BLOOD CHEM (2.jpg) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/2.jpg"
+                 data-title="Blood Chemistry Packages"
+                 data-desc="Unlock the secrets of your health with our comprehensive Blood Chemistry Test! CHEM 8: Blood Urea Nitrogen (BUN), Blood Uric Acid (BUA), Creatinine, Glucose (Fasting), Lipid Profile. CHEM 10: Blood Urea Nitrogen (BUN), Blood Uric Acid (BUA), Creatinine, Glucose (Fasting), Lipid Profile, SGOT(AST), SGPT(ALT). CHEM 12+ECG & CHEM 12 also available."
+                 data-price="Contact for pricing">
+                <img src="goclinicpackages/2.jpg" alt="Blood Chemistry Packages">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 2. OB PACKAGES (3.jpg) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/3.jpg"
+                 data-title="OB Packages"
+                 data-desc="Prenatal care packages. OB Package 1: ABO and RH Typing, Anti HIV (1&2), Complete Blood Count, Glucose (Fasting), HBSAG, Syphillis/RPR, Urinalysis. OB Package 2: Complete Blood Count, HBSAG, Syphillis/RPR, Urinalysis. OB Package 3: Complete Blood Count, Oral Glucose Test 75grams, Urinalysis."
+                 data-price="Contact for pricing">
+                <img src="goclinicpackages/3.jpg" alt="OB Packages">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 3. ANNUAL PHYSICAL EXAM (4.jpg) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/4.jpg"
+                 data-title="Annual Physical Exam"
+                 data-desc="Complete annual physical examination package. Includes: Complete Blood Count, Urinalysis, Fecalysis, Chest X-Ray, Physical Assessment. Additional tests available: 2-Panel Drug Test, ECG, CHEM 10, PAP Smear, Hepatitis B Screening (HBSAG). Contact us to customize for your company's health and wellness goals."
+                 data-price="Contact for pricing">
+                <img src="goclinicpackages/4.jpg" alt="Annual Physical Exam">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 4. THYROID PANEL (5.jpg) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/5.jpg"
+                 data-title="Thyroid Panel"
+                 data-desc="Take control of your health with a comprehensive thyroid panel. Feeling off lately? Fatigue, weight changes, mood swings, or skin issues might be signs of thyroid imbalance. It could be time to get your thyroid levels checked! Includes: FT3, FT4, Thyroid Gland Ultrasound, TSH ECLIA."
+                 data-price="Contact for pricing">
+                <img src="goclinicpackages/5.jpg" alt="Thyroid Panel">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 5. GENERAL WELLNESS PACKAGE (6.jpg) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/6.jpg"
+                 data-title="General Wellness Package"
+                 data-desc="Comprehensive health screening package. Includes: 12 L ECG, 24 Hour Ambulatory BP Monitoring, Blood Uric Acid (BUA), Chest PA, Complete Blood Count, Creatinine, Glucose (Fasting), HBA1C %, Lipid Profile (Cholesterol, Triglycerides, HDL, LDL), Potassium, SGOT(AST), SGPT(ALT), Sodium, TSH ECLIA, Urinalysis, Whole Abdomen Ultrasound."
+                 data-price="Contact for pricing">
+                <img src="goclinicpackages/6.jpg" alt="General Wellness Package">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 6. DENGUE PACKAGE (7.jpg) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/7.jpg"
+                 data-title="Dengue Package"
+                 data-desc="Dengue fever screening package. Includes: Complete Blood Count, Dengue Duo (IgG/IgM), Dengue NS1 Antigen. Book your appointment today!"
+                 data-price="₱3,000">
+                <img src="goclinicpackages/7.jpg" alt="Dengue Package">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 7. COMPREHENSIVE APAS PANEL (11.jpg) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/11.jpg"
+                 data-title="Comprehensive APAS Panel"
+                 data-desc="Comprehensive Antiphospholipid Antibody Syndrome screening. Includes: SCT Silica Clotting time, APTT (Partial Thromboplastin), DRVVT, ACA IgG (Anti-Cardiolipin IgG), ACA IgM (Anti-Cardiolipin IgM), Beta 2 IgG (Beta 2 Glycoprotein IgM), Beta 2 IgM (Beta 2 Glycoprotein IgG). Results release within 7 days. In partnership with BloodWorks."
+                 data-price="₱20,000">
+                <img src="goclinicpackages/11.jpg" alt="Comprehensive APAS Panel">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 8. BASIC APAS PANEL (16.png) -->
+            <div class="package-card" onclick="openPackageModal(this)" 
+                 data-image="goclinicpackages/16.jpg"
+                 data-title="Basic APAS Panel"
+                 data-desc="Antiphospholipid Antibody Syndrome screening. Includes: SCT Silica Clotting time, APTT (Partial Thromboplastin), DRVVT, ACA IgG (Anti-Cardiolipin IgG). Results release within 7 days. In partnership with BloodWorks."
+                 data-price="₱12,000">
+                <img src="goclinicpackages/16.jpg" alt="Basic APAS Panel">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+
+            <!-- 9. COMPREHENSIVE ALLERGY PANEL (17.png) -->
+            <div class="package-card" onclick="openPackageModal(this)"
+                 data-image="goclinicpackages/17.png"
+                 data-title="Comprehensive Allergy Panel"
+                 data-desc="Food & Respiratory allergy testing - Blood Test Procedure. Results release within 7 days. In partnership with BloodWorks."
+                 data-price="₱16,800">
+                <img src="goclinicpackages/17.png" alt="Comprehensive Allergy Panel">
+                <div class="package-hover">
+                    <i class="fas fa-search-plus"></i>
+                    <span>View Details</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="packages-cta">
+            <p>Need help choosing the right package?</p>
+            <a href="contact.us.html" class="cta-button">
+                <i class="fas fa-phone-alt"></i> Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Split Screen Modal -->
+    <div id="packageModal" class="split-modal">
+        <div class="modal-overlay" onclick="closePackageModal()"></div>
+        <div class="modal-container">
+            <button class="modal-close" onclick="closePackageModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-split">
+                <!-- LEFT: Image -->
+                <div class="modal-left">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                
+                <!-- RIGHT: Content -->
+                <div class="modal-right">
+                    <div class="modal-content-wrapper">
+                        <h2 id="modalTitle">Package Title</h2>
+                        
+                        <div class="modal-price">
+                            <span class="price-label">Package Price</span>
+                            <span id="modalPrice" class="price-value">Contact for pricing</span>
+                        </div>
+                        
+                        <div class="modal-description">
+                            <h3><i class="fas fa-file-medical"></i> Package Details</h3>
+                            <p id="modalDesc">Package description here...</p>
+                        </div>
+                        
+                        <div class="modal-features">
+                            <h3><i class="fas fa-check-circle"></i> Why Choose GoClinic?</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Modern facilities & equipment</li>
+                                <li><i class="fas fa-check"></i> Experienced medical professionals</li>
+                                <li><i class="fas fa-check"></i> Accredited by major HMOs</li>
+                                <li><i class="fas fa-check"></i> Located in Calamba, Laguna</li>
+                                <li><i class="fas fa-check"></i> Fast and accurate results</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="modal-actions">
+                            <a href="contact.us.html" class="btn-primary">
+                                <i class="fas fa-calendar-check"></i> Book Now
+                            </a>
+                            <a href="tel:09198611327" class="btn-secondary">
+                                <i class="fas fa-phone"></i> Call 0919-861-1327
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+    
+    
+
+<!-- HMO Partners Section -->
+<section class="hmo-partners-section">
+    <div class="hmo-container">
+        <!-- Header -->
+        <div class="hmo-header">
+            <div class="hmo-badge">
+                <i class="fas fa-handshake"></i>
+                <span>Accredited HMO Partners</span>
+            </div>
+        </div>
+
+        <!-- Logos Slider -->
+        <div class="hmo-slider">
+            <div class="hmo-track">
+                <!-- First Set -->
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
+
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <!-- Information Section -->
+        <div class="footer-info">
+            <img src="images/footerlogo.png" alt="GoClinic Logo" class="footer-logo">
+            
+            <h3>Information</h3>
+            <p>
+                <i class="fas fa-phone"></i> 
+                <a href="tel:09198611327">0919 861 1327</a>
+            </p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=GoClinic+Margimel+Building,+National+Highway,+Brgy.+Halang,+Calamba,+Laguna,+Philippines,+4027" target="_blank">
+                    Margimel Building, National Highway<br>
+                    Brgy. Halang, Calamba, Laguna 4027
+                </a>
+            </p>
+            
+            <h3>Follow Us</h3>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/GoClinicDSC" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/GoClinicCalamba" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="footer-services">
+            <h3><a href="about.us.html">About Us</a></h3>
+            <ul>
+                <li><a href="history.html">History</a></li>
+                <li><a href="mission.vision.html">Mission & Vision</a></li>
+                <li><a href="https://www.facebook.com/GoClinicDSC" target="_blank">Facebook Page</a></li>
+            </ul>
+        </div>
+
+        <!-- Services Section -->
+        <div class="footer-quick-menu">
+            <h3><a href="services.html">Services</a></h3>
+            <ul>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="patient&guest.html">Patient & Guests</a></li>
+                <li><a href="hmos.html">HMO's</a></li>
+                <li><a href="news&updates.html">News</a></li>
+                <li><a href="contact.us.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="footer-emergency">
+            <h3>Contact Details</h3>
+            <p>
+                <i class="fas fa-clinic-medical"></i> 
+                Monday - Saturday<br>6:00 AM - 6:00 PM
+            </p>
+            <p>
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:calamba.goclinic@gmail.com">calamba.goclinic@gmail.com</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <p>© 2025 GoClinic. All Rights Reserved</p>
+    </div>
+</footer>
+
+
+    <script>
+        // Toggle Menu for Mobile
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    
+        // Toggle Dropdown for ABOUT US
+        function toggleDropdown(event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+            const dropdown = document.getElementById('about-dropdown');
+            dropdown.classList.toggle('active'); // Toggle the active class
+        }
+    
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            const dropdown = document.getElementById('about-dropdown');
+            if (!event.target.matches('.dropdown a') && dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active'); // Close dropdown
+            }
+        }
+    </script>
+    
+
+
+<!-- Link to JavaScript if needed -->
+<script src="script.js"></script>
+</body>
+</html>

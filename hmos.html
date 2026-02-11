@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoClinic Diagnostic and Specialty Center</title>
+    <link rel="icon" type="image/png" href="images/logo1.jpg"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1978438655573991" nonce="2jpccXO2"></script>
+</head>
+
+<body>
+<header>
+    <div class="info-bar">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="index.html">
+        <img src="images/mainlogo1-removebg-preview.png" alt="Clinic Logo">
+        </a>
+    </div>
+
+    <!-- Clinic Hours -->
+    <div class="clinic-hours">
+      <h3><i class="fa-regular fa-clock"></i> Clinic Hours</h3>
+      <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+      <p>Sat: 9:00 AM - 1:00 PM</p>
+    </div>
+
+    <!-- Address -->
+    <div class="address">
+      <h3><i class="fa-solid fa-location-dot"></i> Address</h3>
+      <p>Margimel Building, National Highway, Brgy. Halang, Calamba, Laguna Philippines, 4027</p>
+      <p>(Behind Yellow Cab Restaurant)</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact">
+    <h3><i class="fa-solid fa-phone"></i> Contact</h3> <!-- FIXED -->
+
+    <div class="contact-item">
+        <p>Call Us: <a href="tel:09198611327">0919 861 1327</a></p>
+    </div>
+
+    <div class="contact-item">
+        <p>Follow Us: <a href="https://www.facebook.com/GoClinicDSC" target="_blank">GoClinicDSC</a></p>
+    </div>
+    </div>
+</header>
+<nav>
+    <div class="nav-container">
+        <!-- Hamburger Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul id="menu">
+            <li><a href="index.html">HOME</a></li>
+            <li class="dropdown">
+                <a href="about.us.html">ABOUT US</a>
+                <button onclick="toggleDropdown(event)">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <ul class="dropdown-content" id="about-dropdown">
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="mission.vision.html">Mission & Vision</a></li>
+                    <li><a href="https://www.facebook.com/GoClinicDSC" target="_blank">Facebook Page</a></li>
+                </ul>
+            </li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="doctors.html">DOCTORS</a></li>
+            <li><a href="patient&guest.html">PATIENT & GUESTS</a></li>
+            <li><a href="hmos.html">HMO'S</a></li>
+            <li><a href="news&updates.html">NEWS</a></li>
+            <li><a href="contact.us.html">CONTACT US</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="menu-backdrop"></div>
+    
+        <!-- Section with background image -->
+        <section class="hero-section">
+            <div class="hero-overlay">
+                <h1>HMO Partners</h1>
+            </div>
+        </section>
+        
+    </header>
+
+    <main>
+        <div class="hmo-partners-section">
+            <div class="hmo-logos">
+        <div class="hmo-logos">
+            <div class="hmo-logo-item"><img src="images/hmocontent.jpg" alt="HMO Image 1"></div>
+            <div class="hmo-logo-item"><img src="images/hmocontent1.jpg" alt="HMO Image 2"></div> 
+        </div>
+    </div>
+</main>
+
+
+<!-- HMO Partners Section -->
+<section class="hmo-partners-section">
+    <div class="hmo-container">
+        <!-- Header -->
+        <div class="hmo-header">
+            <div class="hmo-badge">
+                <i class="fas fa-handshake"></i>
+                <span>Accredited HMO Partners</span>
+            </div>
+        </div>
+
+        <!-- Logos Slider -->
+        <div class="hmo-slider">
+            <div class="hmo-track">
+                <!-- First Set -->
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
+
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+<footer class="footer">
+    <div class="container">
+        <!-- Information Section -->
+        <div class="footer-info">
+            <img src="images/footerlogo.png" alt="GoClinic Logo" class="footer-logo">
+            
+            <h3>Information</h3>
+            <p>
+                <i class="fas fa-phone"></i> 
+                <a href="tel:09198611327">0919 861 1327</a>
+            </p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=GoClinic+Margimel+Building,+National+Highway,+Brgy.+Halang,+Calamba,+Laguna,+Philippines,+4027" target="_blank">
+                    Margimel Building, National Highway<br>
+                    Brgy. Halang, Calamba, Laguna 4027
+                </a>
+            </p>
+            
+            <h3>Follow Us</h3>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/GoClinicDSC" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/GoClinicCalamba" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="footer-services">
+            <h3><a href="about.us.html">About Us</a></h3>
+            <ul>
+                <li><a href="history.html">History</a></li>
+                <li><a href="mission.vision.html">Mission & Vision</a></li>
+                <li><a href="https://www.facebook.com/GoClinicDSC" target="_blank">Facebook Page</a></li>
+            </ul>
+        </div>
+
+        <!-- Services Section -->
+        <div class="footer-quick-menu">
+            <h3><a href="services.html">Services</a></h3>
+            <ul>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="patient&guest.html">Patient & Guests</a></li>
+                <li><a href="hmos.html">HMO's</a></li>
+                <li><a href="news&updates.html">News</a></li>
+                <li><a href="contact.us.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="footer-emergency">
+            <h3>Contact Details</h3>
+            <p>
+                <i class="fas fa-clinic-medical"></i> 
+                Monday - Saturday<br>6:00 AM - 6:00 PM
+            </p>
+            <p>
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:calamba.goclinic@gmail.com">calamba.goclinic@gmail.com</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <p>© 2025 GoClinic. All Rights Reserved</p>
+    </div>
+</footer>
+
+
+    <script>
+        // Toggle Menu for Mobile
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    
+        // Toggle Dropdown for ABOUT US
+        function toggleDropdown(event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+            const dropdown = document.getElementById('about-dropdown');
+            dropdown.classList.toggle('active'); // Toggle the active class
+        }
+    
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            const dropdown = document.getElementById('about-dropdown');
+            if (!event.target.matches('.dropdown a') && dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active'); // Close dropdown
+            }
+        }
+    </script>
+    
+
+
+<!-- Link to JavaScript if needed -->
+<script src="script.js"></script>
+</body>
+</html>
+
