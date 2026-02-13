@@ -1,4 +1,5 @@
 {
     "git.confirmSync": true,
-    "git.enabled": false
+    "git.enabled": false,
+    "liveServer.settings.port": 5501
 }
