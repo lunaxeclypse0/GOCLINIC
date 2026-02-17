@@ -5624,7 +5624,7 @@ img {
 
 .chat-launcher {
   position: fixed;   
-  right: 20px;
+  right: 25px;
   bottom: 20px;
   z-index: 9999;
   width: 56px;
@@ -5722,4 +5722,6 @@ img {
 .news-card:nth-child(3) {
     transition-delay: 0.3s;
 }
+
+
 
