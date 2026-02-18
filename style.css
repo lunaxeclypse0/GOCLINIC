@@ -5620,28 +5620,98 @@ img {
     }
 }
 
-/*Floating Messenger Button */
+/* ========== FLOATING CHAT BUTTONS - RESPONSIVE ALIGNMENT ========== */
 
-.chat-launcher {
-  position: fixed;   
-  right: 25px;
+/* BASE DESKTOP (1025px and up) - PERFECT NA */
+#messengerBtn.chat-launcher {
+  position: fixed;
+  right: 15px;          /* PERFECT alignment with Tawk xOffset: 9.5 */
   bottom: 20px;
-  z-index: 9999;
+  z-index: 9998;
   width: 56px;
   height: 56px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: #0084FF;  
-  color: #fff;         
+  background: linear-gradient(135deg, #0084FF 0%, #0066CC 100%);
+  color: #fff;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 10px 24px rgba(0, 132, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.chat-launcher:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(0,0,0,0.22); }
-@media (max-width: 768px) {
-  .chat-launcher { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+
+#messengerBtn.chat-launcher:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 132, 255, 0.45);
+  background: linear-gradient(135deg, #0066CC 0%, #004C99 100%);
+}
+
+#messengerBtn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+  
+/* TABLET (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  #messengerBtn.chat-launcher {
+    right: 11px;
+    bottom: 18px;
+    width: 54px;
+    height: 54px;
+  }
+  
+  #messengerBtn svg {
+    width: 23px;
+    height: 23px;
+  }
+}
+
+/* MOBILE LANDSCAPE & LARGE PHONES (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  #messengerBtn.chat-launcher {
+    right: 12px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  
+  #messengerBtn svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* SMALL MOBILE (376px - 480px) */
+@media (max-width: 480px) and (min-width: 376px) {
+  #messengerBtn.chat-launcher {
+    right: 15px;
+    bottom: 15px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  #messengerBtn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* EXTRA SMALL (375px and below - iPhone SE, etc.) */
+@media (max-width: 375px) {
+  #messengerBtn.chat-launcher {
+    right: 15   px;
+    bottom: 14px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  #messengerBtn svg {
+    width: 19px;
+    height: 19px;
+  }
 }
 
 

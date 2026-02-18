@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1978438655573991" nonce="2jpccXO2"></script>
-    <script src="protet.js"></script>
+    <script src="protect.js"></script>
     <style>
     .skeleton-loader {
         position: fixed;
@@ -840,40 +840,91 @@ function openFullMap() {
    target="_blank"
    rel="noopener"
    aria-label="Chat on Messenger">
-<svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" focusable="false">
+  <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true" focusable="false">
     <path fill="currentColor" d="M16 4c-6.59 0-12 5.14-12 11.5 0 3.39 1.57 6.4 4 8.5v4.625L12.4375 26.40625C13.566406 26.746094 14.746094 27 16 27c6.59 0 12-5.14 12-11.5S22.59 4 16 4zm0 2c5.56 0 10 4.27 10 9.5S21.56 25 16 25c-1.2 0-2.34-.23-3.41-.59l-.41-.13-2.19 1.09v-2.25l-.38-.31C7.41 21.06 6 18.44 6 15.5 6 10.27 10.44 6 16 6zm-1.125 6.344l-6.031 6.375 5.406-3 2.875 3.093 5.969-6.469-5.281 2.969z"/>
-</svg>
+  </svg>
 </a>
 
+<!-- Tawk.to Script with Responsive Settings -->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-
-Tawk_API.onLoad = function(){
-
-    // open widget
-    Tawk_API.maximize();
-
-    // wait a bit then open chat (skips Home screen)
-    setTimeout(function(){
-        if (Tawk_API.startChat) {
-            Tawk_API.startChat();
-        }
-    }, 700);
-
-};
-
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6992aec73a5ba51c3b88d1d6/1jhiflf8v';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+  var Tawk_API = Tawk_API || {};
+  
+  // Responsive positioning function
+  function getTawkSettings() {
+    var width = window.innerWidth;
+    
+    if (width <= 375) {
+      return { xOffset: 4, yOffset: 76 };  
+    } else if (width <= 480) {
+      return { xOffset: 5, yOffset: 78 };
+    } else if (width <= 768) {
+      return { xOffset: 6, yOffset: 80 };
+    } else if (width <= 1024) {
+      return { xOffset: 8, yOffset: 86 };
+    } else {
+      return { xOffset: 9.5, yOffset: 90 };
+    }
+  }
+  
+  // Set initial position
+  var settings = getTawkSettings();
+  Tawk_API.customStyle = {
+    visibility: {
+      desktop: { 
+        position: 'br',
+        xOffset: settings.xOffset,
+        yOffset: settings.yOffset
+      },
+      mobile: { 
+        position: 'br',
+        xOffset: settings.xOffset,
+        yOffset: settings.yOffset
+      }
+    }
+  };
+  
+  // Auto-open chat on click
+  Tawk_API.onLoad = function () {
+    var tries = 0;
+    var timer = setInterval(function(){
+      tries++;
+      
+      var btn =
+        document.querySelector('iframe[title="chat widget"]') ||
+        document.querySelector('iframe[title*="tawk"]') ||
+        document.querySelector('#tawkchat-minified-container') ||
+        document.querySelector('.tawk-min-container');
+      
+      if (btn) {
+        clearInterval(timer);
+        btn.addEventListener("click", function () {
+          setTimeout(function () {
+            if (typeof Tawk_API.startChat === "function") Tawk_API.startChat();
+          }, 250);
+        }, true);
+      }
+      
+      if (tries >= 20) clearInterval(timer);
+    }, 500);
+  };
 </script>
 
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function(){
+    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6992aec73a5ba51c3b88d1d6/1jhiflf8v';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+</script>
 
 <script src="script.js"></script>
 </body>
 </html>
+
+
 
