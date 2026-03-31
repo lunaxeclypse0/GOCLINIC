@@ -188,32 +188,6 @@ function activateSlider() {
     }
 }
 
-// ========== SLIDER FUNCTIONS ==========
-function setupSlider(images) {
-    const slider = document.querySelector('.slider');
-    if (slider) {
-        slider.innerHTML = images.map(img => 
-            `<img src="${img.src}" alt="${img.alt}" class="doctor-img">`
-        ).join('');
-        activateSlider();
-    }
-}
-
-function activateSlider() {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slider img');
-    
-    if (slides.length > 0) {
-        slides[currentSlide].classList.add('active');
-        
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 3000);
-    }
-}
-
 // ========== COMPLETE FIXED NAVIGATION FUNCTIONS ==========
 
 // Toggle Hamburger Menu
@@ -804,6 +778,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     console.log('✅ Scroll animations initialized!');
+});
+
+
+
+function toggleChat() {
+    const options = document.getElementById('chatOptions');
+    const mainBtn = document.getElementById('chatMainBtn');
+    options.classList.toggle('active');
+    mainBtn.classList.toggle('active');
+}
+
+// Close when clicking outside
+document.addEventListener('click', function(e) {
+    const widget = document.getElementById('chatWidget');
+    if (widget && !widget.contains(e.target)) {
+        document.getElementById('chatOptions').classList.remove('active');
+        document.getElementById('chatMainBtn').classList.remove('active');
+    }
+});
+
+
+/* Re-parse FB video embeds on window resize for responsiveness */
+let resizeTimer;
+window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+        if (window.FB) FB.XFBML.parse();
+    }, 300);
 });
 
 

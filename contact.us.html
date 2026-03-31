@@ -4,73 +4,373 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoClinic Diagnostic and Specialty Center</title>
-    <link rel="icon" type="image/png" href="images/logo1.jpg"> 
+    <link rel="icon" type="image/png" href="images/logo1.jpg">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1978438655573991" nonce="2jpccXO2"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=1978438655573991"
+        nonce="2jpccXO2">
+    </script>
+    <script src="protct.js"></script>
+
+    <style>
+
+    .contact-page-section {
+        background: #ffffff;
+        padding: 80px 40px;
+    }
+
+    .contact-page-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: start;
+    }
+
+    /* =============================================
+       LEFT — FORM SIDE
+       ============================================= */
+
+    .contact-left {
+        padding-top: 4px;
+    }
+
+    .contact-eyebrow {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: #ffffff;
+        background: #007bff;
+        padding: 5px 14px;
+        border-radius: 3px;
+        margin-bottom: 22px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .contact-heading {
+        font-family: 'Raleway', sans-serif;
+        font-size: 2.6rem;
+        font-weight: 800;
+        color: #0d1b3e;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+        margin: 0 0 16px;
+    }
+
+    .contact-subtext {
+        font-size: 0.92rem;
+        color: #777;
+        line-height: 1.75;
+        margin: 0 0 44px;
+        font-family: 'Open Sans', sans-serif;
+        max-width: 420px;
+    }
+
+    /* ---- Form Fields ---- */
+    .cform-field {
+        position: relative;
+        margin-bottom: 36px;
+    }
+
+    .cform-field label {
+        display: block;
+        font-size: 0.82rem;
+        color: #999;
+        margin-bottom: 8px;
+        font-family: 'Open Sans', sans-serif;
+        transition: color 0.2s ease;
+    }
+
+    .cform-field:focus-within label {
+        color: #007bff;
+    }
+
+    .cform-field input,
+    .cform-field textarea,
+    .cform-field select {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #d0d0d0;
+        outline: none;
+        padding: 8px 0;
+        font-size: 0.95rem;
+        color: #111;
+        font-family: 'Open Sans', sans-serif;
+        transition: border-color 0.25s ease;
+        resize: none;
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+    }
+
+    .cform-field input:focus,
+    .cform-field textarea:focus,
+    .cform-field select:focus {
+        border-bottom-color: #007bff;
+    }
+
+    .cform-field::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 1px;
+        background: #007bff;
+        transition: width 0.35s ease;
+        pointer-events: none;
+    }
+
+    .cform-field:focus-within::after {
+        width: 100%;
+    }
+
+    .cform-field textarea {
+        min-height: 100px;
+        line-height: 1.75;
+    }
+
+    /* Dropdown arrow */
+    .cform-select-wrap {
+        position: relative;
+    }
+
+    .cform-select-wrap::after {
+        content: '\f107';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+        pointer-events: none;
+        font-size: 0.85rem;
+    }
+
+    .cform-submit {
+        width: 100%;
+        padding: 16px;
+        background: #0d47a1;
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-family: 'Inter', sans-serif;
+        transition: background 0.25s ease, transform 0.2s ease,
+                    box-shadow 0.25s ease;
+    }
+
+    .cform-submit:hover {
+        background: #0a3580;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(13, 71, 161, 0.30);
+    }
+
+    .cform-success {
+        display: none;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .cform-success i {
+        font-size: 2.8rem;
+        color: #007bff;
+        margin-bottom: 14px;
+        display: block;
+    }
+
+    .cform-success h3 {
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+    .cform-success p {
+        font-size: 0.88rem;
+        color: #999;
+    }
+
+    /* =============================================
+       RIGHT — MAP IMAGE + CONTACT INFO
+       ============================================= */
+
+    .contact-right {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .contact-map-box {
+        width: 100%;
+        height: 320px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+
+    .contact-map-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+    }
+
+    .contact-info-list {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .contact-info-item {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 16px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .contact-info-item:last-child {
+        border-bottom: none;
+    }
+
+    .cinfo-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        background: #e8f0fe;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0d47a1;
+        font-size: 1rem;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .contact-info-item:hover .cinfo-icon {
+        background: #0d47a1;
+        color: #ffffff;
+    }
+
+    .cinfo-text {
+        font-size: 0.9rem;
+        color: #444;
+        font-family: 'Open Sans', sans-serif;
+        line-height: 1.5;
+    }
+
+    .cinfo-text a {
+        color: #444;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .cinfo-text a:hover {
+        color: #007bff;
+    }
+
+    .cinfo-text strong {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #bbb;
+        margin-bottom: 2px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+
+    @media (max-width: 1024px) {
+        .contact-page-wrapper { gap: 50px; }
+        .contact-heading { font-size: 2.1rem; }
+    }
+
+    @media (max-width: 768px) {
+        .contact-page-section { padding: 60px 22px; }
+        .contact-page-wrapper {
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+        .contact-heading { font-size: 2rem; }
+        .contact-map-box { height: 260px; }
+    }
+
+    @media (max-width: 480px) {
+        .contact-page-section { padding: 50px 16px; }
+        .contact-heading { font-size: 1.7rem; }
+        .contact-map-box { height: 220px; }
+    }
+
+    </style>
 </head>
 
 <body>
+
 <header>
     <div class="info-bar">
-    <!-- Logo -->
-    <div class="logo">
-        <a href="index.html">
-        <img src="images/mainlogo1-removebg-preview.png" alt="Clinic Logo">
-        </a>
-    </div>
-
-    <!-- Clinic Hours -->
-    <div class="clinic-hours">
-      <h3><i class="fa-regular fa-clock"></i> Clinic Hours</h3>
-      <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
-      <p>Sat: 9:00 AM - 1:00 PM</p>
-    </div>
-
-    <!-- Address -->
-    <div class="address">
-      <h3><i class="fa-solid fa-location-dot"></i> Address</h3>
-      <p>Margimel Building, National Highway, Brgy. Halang, Calamba, Laguna Philippines, 4027</p>
-      <p>(Behind Yellow Cab Restaurant)</p>
-    </div>
-
-    <!-- Contact -->
-    <div class="contact">
-    <h3><i class="fa-solid fa-phone"></i> Contact</h3> <!-- FIXED -->
-
-    <div class="contact-item">
-        <p>Call Us: <a href="tel:09198611327">0919 861 1327</a></p>
-    </div>
-
-    <div class="contact-item">
-        <p>Follow Us: <a href="https://www.facebook.com/GoClinicDSC" target="_blank">GoClinicDSC</a></p>
-    </div>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/mainlogo1-removebg-preview.png" alt="Clinic Logo">
+            </a>
+        </div>
+        <div class="clinic-hours">
+            <h3><i class="fa-regular fa-clock"></i> Clinic Hours</h3>
+            <p>Monday - Saturday: 6:00 AM - 6:00 PM</p>
+            <p>Sunday: 6:00 AM - 2:00 PM</p>
+        </div>
+        <div class="address">
+            <h3><i class="fa-solid fa-location-dot"></i> Address</h3>
+            <p>Margimel Building, National Highway, Brgy. Halang, Calamba, Laguna Philippines, 4027</p>
+            <p>(Behind Yellow Cab Restaurant)</p>
+        </div>
+        <div class="contact">
+            <h3><i class="fa-solid fa-phone"></i> Contact</h3>
+            <div class="contact-item">
+                <p>Call Us: <a href="tel:09198611327">0919 861 1327</a></p>
+            </div>
+            <div class="contact-item">
+                <p>Follow Us: <a href="https://www.facebook.com/GoClinicDSC" target="_blank">GoClinicDSC</a></p>
+            </div>
+        </div>
     </div>
 </header>
+
 <nav>
     <div class="nav-container">
-        <!-- Hamburger Icon -->
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
-        
         <ul id="menu">
             <li><a href="index.html">HOME</a></li>
             <li class="dropdown">
                 <a href="about.us.html">ABOUT US</a>
                 <button onclick="toggleDropdown(event)">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <ul class="dropdown-content" id="about-dropdown">
                     <li><a href="history.html">History</a></li>
@@ -90,124 +390,194 @@
 
 <div class="menu-backdrop"></div>
 
-    
-        <!-- Section with background image -->
-        <section class="hero-section">
-            <div class="hero-overlay">
-                <h1>Contact Us</h1>
-            </div>
-        </section>
-        
-    </header>
+<!-- Hero Banner -->
+<section class="hero-section">
+    <div class="hero-overlay">
+        <h1>Contact Us</h1>
+    </div>
+</section>
 
-    <section class="location-map">
-        <div class="contact-us">
-            <!-- Location Section (Image) -->
-            <div class="location-us">
-                <div class="map-us">
-                    <img src="images/MAP GUIDE.jpg" alt="Our Location">
+<!-- ============ CONTACT SECTION ============ -->
+<section class="contact-page-section">
+    <div class="contact-page-wrapper">
+
+        <!-- ===== LEFT: FORM ===== -->
+        <div class="contact-left">
+
+            <span class="contact-eyebrow">Contact Us</span>
+            <h2 class="contact-heading">Get in Touch</h2>
+            <p class="contact-subtext">
+                Feel free to reach out to us anytime. Your feedback and inquiries are always welcome.
+            </p>
+
+            <!-- Netlify Form -->
+            <form
+                id="contactForm"
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                action="/contact.us.html?sent=true">
+
+                <input type="hidden" name="form-name" value="contact">
+                <p style="display:none;"><input name="bot-field"></p>
+
+                <div class="cform-field">
+                    <label>Full Name *</label>
+                    <input type="text" name="fullname" placeholder="Enter your full name" required>
                 </div>
+
+                <div class="cform-field">
+                    <label>Mobile No. *</label>
+                    <input type="tel" name="phone" placeholder="e.g. 09XX XXX XXXX" required>
+                </div>
+
+                <div class="cform-field">
+                    <label>Concern *</label>
+                    <div class="cform-select-wrap">
+                        <select name="concern" required>
+                            <option value="" disabled selected>Select your concern</option>
+                            <option value="Appointment Inquiry">Appointment Inquiry</option>
+                            <option value="Laboratory Results">Laboratory Results</option>
+                            <option value="HMO / Insurance">HMO / Insurance</option>
+                            <option value="Doctor Schedule">Doctor Schedule</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="cform-field">
+                    <label>Message *</label>
+                    <textarea name="message" rows="4" placeholder="Type your message here..." required></textarea>
+                </div>
+
+                <button type="submit" class="cform-submit">
+                    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> SEND
+                </button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="cform-success" id="cformSuccess">
+                <i class="fas fa-check-circle"></i>
+                <h3>Message Sent!</h3>
+                <p>Thank you for reaching out. We'll get back to you shortly.</p>
             </div>
-    
-            <!-- Contact Form Section -->
-            <div class="contact-formus">
-                <h2>Send a Message</h2>
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="c252cb74-83bd-4b55-a0ab-82c9a775a336">
-                    <input type="text" name="fullname" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="text" name="phone" placeholder="Phone Number">
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+
+        </div>
+
+        <!-- ===== RIGHT: MAP IMAGE + INFO ===== -->
+        <div class="contact-right">
+
+            <div class="contact-map-box">
+                <img src="images/MAP GUIDE.jpg" alt="GoClinic Location Map">
+            </div>
+
+            <div class="contact-info-list">
+
+                <div class="contact-info-item">
+                    <div class="cinfo-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="cinfo-text">
+                        <strong>Email</strong>
+                        <a href="mailto:calamba.goclinic@gmail.com">calamba.goclinic@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="cinfo-icon"><i class="fas fa-phone"></i></div>
+                    <div class="cinfo-text">
+                        <strong>Phone</strong>
+                        <a href="tel:09198611327">0919 861 1327</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="cinfo-icon"><i class="fas fa-clock"></i></div>
+                    <div class="cinfo-text">
+                        <strong>Clinic Hours</strong>
+                        Monday – Saturday &nbsp;|&nbsp; 6:00 AM – 6:00 PM
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="cinfo-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="cinfo-text">
+                        <strong>Address</strong>
+                        Margimel Bldg., National Highway, Brgy. Halang, Calamba, Laguna 4027
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="cinfo-icon"><i class="fab fa-facebook-f"></i></div>
+                    <div class="cinfo-text">
+                        <strong>Facebook</strong>
+                        <a href="https://www.facebook.com/GoClinicDSC" target="_blank">GoClinicDSC</a>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
-    
-    
+
+    </div>
+</section>
 
 <!-- HMO Partners Section -->
 <section class="hmo-partners-section">
     <div class="hmo-container">
-        <!-- Header -->
         <div class="hmo-header">
             <div class="hmo-badge">
                 <i class="fas fa-handshake"></i>
                 <span>Accredited HMO Partners</span>
             </div>
         </div>
-
-        <!-- Logos Slider -->
         <div class="hmo-slider">
             <div class="hmo-track">
-                <!-- First Set -->
-                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
-
-                <!-- Duplicate Set for Seamless Loop -->
-                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO Partner 1"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO Partner 2"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO Partner 3"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO Partner 4"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO Partner 5"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO Partner 6"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO Partner 7"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO Partner 8"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO Partner 9"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO Partner 10"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO Partner 11"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO Partner 12"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO Partner 13"/></div>
-                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO Partner 14"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO 14"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage1.png" alt="HMO 1"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage2.png" alt="HMO 2"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage3.png" alt="HMO 3"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage4.png" alt="HMO 4"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage5.png" alt="HMO 5"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage6.png" alt="HMO 6"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage7.png" alt="HMO 7"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage8.png" alt="HMO 8"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage9.png" alt="HMO 9"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage10.png" alt="HMO 10"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage11.png" alt="HMO 11"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage12.png" alt="HMO 12"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage13.png" alt="HMO 13"/></div>
+                <div class="hmo-slide"><img src="images/hmoimage14.png" alt="HMO 14"/></div>
             </div>
         </div>
     </div>
 </section>
-    
 
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
-        <!-- Information Section -->
         <div class="footer-info">
             <img src="images/footerlogo.png" alt="GoClinic Logo" class="footer-logo">
-            
-            <h3>Information</h3>
-            <p>
-                <i class="fas fa-phone"></i> 
-                <a href="tel:09198611327">0919 861 1327</a>
-            </p>
-            <p>
-                <i class="fas fa-map-marker-alt"></i> 
-                <a href="https://www.google.com/maps/search/?api=1&query=GoClinic+Margimel+Building,+National+Highway,+Brgy.+Halang,+Calamba,+Laguna,+Philippines,+4027" target="_blank">
-                    Margimel Building, National Highway<br>
-                    Brgy. Halang, Calamba, Laguna 4027
-                </a>
-            </p>
-            
+            <p><i class="fas fa-clock"></i> Monday – Saturday &nbsp;|&nbsp; 6:00 AM – 6:00 PM</p>
+            <p><i class="fas fa-clock"></i> Sunday &nbsp;|&nbsp; 6:00 AM – 2:00 PM</p>
+            <p><i class="fas fa-map-marker-alt"></i> Margimel Bldg., National Highway, Brgy.<br>Halang, Calamba, Laguna 4027</p>
             <h3>Follow Us</h3>
             <div class="footer-social">
-                <a href="https://www.facebook.com/GoClinicDSC" class="social-icon" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://instagram.com/GoClinicCalamba" class="social-icon" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                <a href="https://www.facebook.com/GoClinicDSC" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/GoClinicCalamba" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-
-        <!-- About Section -->
         <div class="footer-services">
             <h3><a href="about.us.html">About Us</a></h3>
             <ul>
@@ -216,8 +586,6 @@
                 <li><a href="https://www.facebook.com/GoClinicDSC" target="_blank">Facebook Page</a></li>
             </ul>
         </div>
-
-        <!-- Services Section -->
         <div class="footer-quick-menu">
             <h3><a href="services.html">Services</a></h3>
             <ul>
@@ -228,55 +596,42 @@
                 <li><a href="contact.us.html">Contact Us</a></li>
             </ul>
         </div>
-
-        <!-- Contact Section -->
         <div class="footer-emergency">
             <h3>Contact Details</h3>
-            <p>
-                <i class="fas fa-clinic-medical"></i> 
-                Monday - Saturday<br>6:00 AM - 6:00 PM
-            </p>
-            <p>
-                <i class="fas fa-envelope"></i> 
-                <a href="mailto:calamba.goclinic@gmail.com">calamba.goclinic@gmail.com</a>
-            </p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:calamba.goclinic@gmail.com">calamba.goclinic@gmail.com</a></p>
+            <p><i class="fas fa-phone"></i> <a href="tel:09198611327">0919 861 1327</a></p>
         </div>
     </div>
-    
-    <!-- Footer Bottom -->
     <div class="footer-bottom">
-        <p>© 2025 GoClinic. All Rights Reserved</p>
+        <p>© 2025 GoClinic Diagnostic and Specialty Center. All Rights Reserved.</p>
     </div>
 </footer>
 
+<script>
+    function toggleMenu() {
+        document.getElementById('menu').classList.toggle('active');
+    }
 
-    <script>
-        // Toggle Menu for Mobile
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-        }
-    
-        // Toggle Dropdown for ABOUT US
-        function toggleDropdown(event) {
-            event.preventDefault(); // Prevent default anchor click behavior
-            const dropdown = document.getElementById('about-dropdown');
-            dropdown.classList.toggle('active'); // Toggle the active class
-        }
-    
-        // Close dropdown when clicking outside
-        window.onclick = function(event) {
-            const dropdown = document.getElementById('about-dropdown');
-            if (!event.target.matches('.dropdown a') && dropdown.classList.contains('active')) {
-                dropdown.classList.remove('active'); // Close dropdown
-            }
-        }
-    </script>
-    
+    function toggleDropdown(event) {
+        event.preventDefault();
+        document.getElementById('about-dropdown').classList.toggle('active');
+    }
 
+    window.onclick = function(event) {
+        const dropdown = document.getElementById('about-dropdown');
+        if (!event.target.matches('.dropdown a') && dropdown.classList.contains('active'))
+            dropdown.classList.remove('active');
+    }
 
-<!-- Link to JavaScript if needed -->
+    window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('sent') === 'true') {
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('cformSuccess').style.display = 'block';
+        }
+    });
+</script>
+
 <script src="script.js"></script>
 </body>
 </html>
-
