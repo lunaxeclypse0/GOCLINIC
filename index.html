@@ -678,13 +678,11 @@
     </button>
 </div>
 
-<!-- ================= EMAIL MODAL FUNCTIONS ================= -->
 <script>
 function openEmailModal() {
     document.getElementById('emailModalOverlay').classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // reset form
     document.getElementById('emod-name').value = '';
     document.getElementById('emod-email').value = '';
     document.getElementById('emod-phone').value = '';
@@ -699,17 +697,16 @@ function closeEmailModal() {
     document.body.style.overflow = '';
 }
 
-// click outside modal
 document.getElementById('emailModalOverlay').addEventListener('click', function(e) {
     if (e.target === this) closeEmailModal();
 });
 
-// ESC close
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeEmailModal();
 });
 
 function sendEmailModal() {
+
     const name = document.getElementById('emod-name').value.trim();
     const email = document.getElementById('emod-email').value.trim();
     const phone = document.getElementById('emod-phone').value.trim();
@@ -724,35 +721,32 @@ function sendEmailModal() {
     btn.disabled = true;
     btn.innerHTML = "SENDING...";
 
-    // ✅ NETLIFY SUBMISSION FIXED
-    const formData = new FormData();
-    formData.append("form-name", "widget-email");
-    formData.append("name", name);
-    formData.append("email", email || "N/A");
-    formData.append("phone", phone || "N/A");
-    formData.append("message", message);
+    // ================================
+    // ✅ REAL NETLIFY FORM SUBMIT FIX
+    // ================================
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/";
+    form.setAttribute("data-netlify", "true");
 
-    fetch("/", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('emodal-form-wrap').style.display = 'none';
-            document.getElementById('emodal-success').style.display = 'block';
+    const fields = {
+        "form-name": "widget-email",
+        "name": name,
+        "email": email || "N/A",
+        "phone": phone || "N/A",
+        "message": message
+    };
 
-            setTimeout(() => {
-                closeEmailModal();
-            }, 2500);
-        } else {
-            throw new Error("Netlify failed");
-        }
-    })
-    .catch(() => {
-        alert("Failed to send. Please try again or call support.");
-        btn.disabled = false;
-        btn.innerHTML = "SEND";
-    });
+    for (let key in fields) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
 }
 </script>
 
