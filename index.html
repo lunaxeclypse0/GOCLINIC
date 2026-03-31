@@ -631,13 +631,12 @@
     </div>
 </footer>
 
-<!-- ✅ Hidden Netlify form — para ma-detect sa build time -->
-<form name="widget-email" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" hidden>
-    
+<!-- ✅ Hidden Netlify Form (IMPORTANT FOR DETECTION) -->
+<form name="widget-email" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="hidden" name="form-name" value="widget-email">
-    
+
     <!-- Anti-spam -->
-    <input type="text" name="bot-field" hidden>
+    <input type="text" name="bot-field">
 
     <!-- Fields -->
     <input name="name">
@@ -649,145 +648,135 @@
 <!-- Floating Chat Widget -->
 <div class="chat-widget" id="chatWidget">
     <div class="chat-options" id="chatOptions">
+
         <button class="chat-option email-btn"
             onclick="openEmailModal()"
-            aria-label="Email Us" title="Email Us" type="button">
+            type="button"
+            aria-label="Email Us">
             <i class="fas fa-envelope"></i>
         </button>
+
         <a class="chat-option viber-btn"
             href="viber://chat?number=%2B639198611327"
-            aria-label="Chat on Viber" title="Viber">
+            aria-label="Viber">
             <i class="fab fa-viber"></i>
         </a>
+
         <a class="chat-option messenger-btn"
-            href="https://m.me/GoClinicDSC?ref=website_button"
-            target="_blank" rel="noopener"
-            aria-label="Chat on Messenger" title="Messenger">
+            href="https://m.me/GoClinicDSC"
+            target="_blank" rel="noopener">
             <i class="fab fa-facebook-messenger"></i>
         </a>
+
     </div>
+
     <button class="chat-main-btn" id="chatMainBtn"
-        onclick="toggleChat()" aria-label="Open Chat" type="button">
-        <img src="images/chatwidget.png" alt="GoClinic" class="chat-main-logo">
+        onclick="toggleChat()"
+        type="button">
+        <img src="images/chatwidget.png" class="chat-main-logo">
         <i class="fas fa-times chat-close-icon"></i>
     </button>
 </div>
 
+<!-- ================= EMAIL MODAL FUNCTIONS ================= -->
 <script>
-    function toggleMenu() { document.getElementById('menu').classList.toggle('active'); }
-    function toggleDropdown(event) {
-        event.preventDefault();
-        document.getElementById('about-dropdown').classList.toggle('active');
+function openEmailModal() {
+    document.getElementById('emailModalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // reset form
+    document.getElementById('emod-name').value = '';
+    document.getElementById('emod-email').value = '';
+    document.getElementById('emod-phone').value = '';
+    document.getElementById('emod-message').value = '';
+
+    document.getElementById('emodal-form-wrap').style.display = 'block';
+    document.getElementById('emodal-success').style.display = 'none';
+}
+
+function closeEmailModal() {
+    document.getElementById('emailModalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// click outside modal
+document.getElementById('emailModalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeEmailModal();
+});
+
+// ESC close
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeEmailModal();
+});
+
+function sendEmailModal() {
+    const name = document.getElementById('emod-name').value.trim();
+    const email = document.getElementById('emod-email').value.trim();
+    const phone = document.getElementById('emod-phone').value.trim();
+    const message = document.getElementById('emod-message').value.trim();
+
+    if (!name || !message) {
+        alert("Please complete required fields.");
+        return;
     }
-    window.onclick = function(event) {
-        const dropdown = document.getElementById('about-dropdown');
-        if (!event.target.matches('.dropdown a') && dropdown.classList.contains('active'))
-            dropdown.classList.remove('active');
-    }
 
-    function searchSpecialization() {
-        const specializationInput = document.getElementById('specialization');
-        if (!specializationInput) { alert('Error: Search form not found'); return; }
-        const specialization = specializationInput.value;
-        if (!specialization) { alert('Please select a specialization first'); return; }
-        window.location.href = `doctors.html?specialization=${encodeURIComponent(specialization)}`;
-    }
+    const btn = document.querySelector('.emodal-submit');
+    btn.disabled = true;
+    btn.innerHTML = "SENDING...";
 
-    // ===== EMAIL MODAL =====
-    function openEmailModal() {
-        const widget = document.getElementById('chatWidget');
-        const options = document.getElementById('chatOptions');
-        if (widget) widget.classList.remove('open');
-        if (options) options.classList.remove('open');
+    // ✅ NETLIFY SUBMISSION FIXED
+    const formData = new FormData();
+    formData.append("form-name", "widget-email");
+    formData.append("name", name);
+    formData.append("email", email || "N/A");
+    formData.append("phone", phone || "N/A");
+    formData.append("message", message);
 
-        document.getElementById('emodal-form-wrap').style.display = 'block';
-        document.getElementById('emodal-success').style.display = 'none';
-        document.getElementById('emod-name').value = '';
-        document.getElementById('emod-email').value = '';
-        document.getElementById('emod-phone').value = '';
-        document.getElementById('emod-message').value = '';
+    fetch("/", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('emodal-form-wrap').style.display = 'none';
+            document.getElementById('emodal-success').style.display = 'block';
 
-        const btn = document.querySelector('.emodal-submit');
+            setTimeout(() => {
+                closeEmailModal();
+            }, 2500);
+        } else {
+            throw new Error("Netlify failed");
+        }
+    })
+    .catch(() => {
+        alert("Failed to send. Please try again or call support.");
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:8px;"></i> SEND';
-
-        document.getElementById('emailModalOverlay').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeEmailModal() {
-        document.getElementById('emailModalOverlay').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    document.getElementById('emailModalOverlay').addEventListener('click', function(e) {
-        if (e.target === this) closeEmailModal();
+        btn.innerHTML = "SEND";
     });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeEmailModal();
-    });
-
-    function sendEmailModal() {
-        const name    = document.getElementById('emod-name').value.trim();
-        const email   = document.getElementById('emod-email').value.trim();
-        const phone   = document.getElementById('emod-phone').value.trim();
-        const message = document.getElementById('emod-message').value.trim();
-
-        if (!name) {
-            alert('Please enter your name.');
-            document.getElementById('emod-name').focus();
-            return;
-        }
-        if (!message) {
-            alert('Please enter your message.');
-            document.getElementById('emod-message').focus();
-            return;
-        }
-
-        const btn = document.querySelector('.emodal-submit');
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i> SENDING...';
-
-        // ✅ Submit via Netlify Forms — walang API, direct sa email!
-        const formData = new FormData();
-        formData.append('form-name', 'widget-email');
-        formData.append('name', name);
-        formData.append('email', email || 'N/A');
-        formData.append('phone', phone || 'N/A');
-        formData.append('message', message);
-
-        fetch('/', { method: 'POST', body: formData })
-        .then(res => {
-            if (res.ok) {
-                document.getElementById('emodal-form-wrap').style.display = 'none';
-                document.getElementById('emodal-success').style.display = 'block';
-                setTimeout(closeEmailModal, 3000);
-            } else {
-                throw new Error('Failed');
-            }
-        })
-        .catch(() => {
-            alert('Failed to send. Please call us at 0919 861 1327.');
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right:8px;"></i> SEND';
-        });
-    }
+}
 </script>
 
-<!-- Events Swiper -->
+<!-- ================= SWIPER ================= -->
 <script>
-    const eventsSwiper = new Swiper('#eventsSwiper', {
-        slidesPerView: 4, spaceBetween: 24, loop: true,
-        pagination: { el: '.events-swiper .swiper-pagination', clickable: true },
-        navigation: { nextEl: '#eventsNext', prevEl: '#eventsPrev' },
-        breakpoints: {
-            0:    { slidesPerView: 1, spaceBetween: 16 },
-            600:  { slidesPerView: 2, spaceBetween: 20 },
-            900:  { slidesPerView: 3, spaceBetween: 22 },
-            1200: { slidesPerView: 4, spaceBetween: 24 },
-        }
-    });
+const eventsSwiper = new Swiper('#eventsSwiper', {
+    slidesPerView: 4,
+    spaceBetween: 24,
+    loop: true,
+    pagination: {
+        el: '.events-swiper .swiper-pagination',
+        clickable: true
+    },
+    navigation: {
+        nextEl: '#eventsNext',
+        prevEl: '#eventsPrev'
+    },
+    breakpoints: {
+        0: { slidesPerView: 1 },
+        600: { slidesPerView: 2 },
+        900: { slidesPerView: 3 },
+        1200: { slidesPerView: 4 }
+    }
+});
 </script>
 
 <script src="script.js"></script>
