@@ -632,8 +632,14 @@
 </footer>
 
 <!-- ✅ Hidden Netlify form — para ma-detect sa build time -->
-<form name="widget-email" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form name="widget-email" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    
     <input type="hidden" name="form-name" value="widget-email">
+    
+    <!-- Anti-spam -->
+    <input type="text" name="bot-field" hidden>
+
+    <!-- Fields -->
     <input name="name">
     <input name="email">
     <input name="phone">
