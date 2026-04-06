@@ -718,13 +718,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // ========== PAGE LOADER ==========
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const loader = document.getElementById('pageLoader');
-    if (loader) {
+    if (!loader) return;
+
+    const startTime = Date.now();
+    const minDisplay = 1500; 
+    const maxDisplay = 2500; 
+    let hidden = false;
+
+    function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+
+        loader.classList.add('hidden');
         setTimeout(() => {
-            loader.classList.add('hidden');
-        }, 800);
+            loader.style.display = 'none';
+        }, 300);
     }
+
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.max(0, minDisplay - elapsed);
+
+    setTimeout(hideLoader, remaining);
+    setTimeout(hideLoader, maxDisplay);
 });
 
 

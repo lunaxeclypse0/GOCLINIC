@@ -1,169 +1,273 @@
-// ========== DEVTOOLS PROTECTION - PRODUCTION READY ==========
-(function() {
-    'use strict';
-    
-    let attemptCount = 0;
-    let userTriedDevTools = false;
-    
-    // Disable right-click with modern notification
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        showWarning('right_click');
-    }, false);
-    
-    // Disable developer shortcuts ONLY
-    document.addEventListener('keydown', function(e) {
-        let blocked = false;
-        
-        // F12
-        if (e.keyCode === 123) {
-            blocked = true;
-            userTriedDevTools = true;
-            showWarning('f12');
-        }
-        // Ctrl+Shift+I (Inspector)
-        else if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-            blocked = true;
-            userTriedDevTools = true;
-            showWarning('inspector');
-        }
-        // Ctrl+Shift+J (Console)
-        else if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-            blocked = true;
-            userTriedDevTools = true;
-            showWarning('console');
-        }
-        // Ctrl+U (View Source)
-        else if (e.ctrlKey && e.keyCode === 85) {
-            blocked = true;
-            userTriedDevTools = true;
-            showWarning('view_source');
-        }
-        // Ctrl+Shift+C (Inspect Element)
-        else if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
-            blocked = true;
-            userTriedDevTools = true;
-            showWarning('inspect');
-        }
-        
-        if (blocked) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-    }, false);
-    
-    // Modern notification warning
-    function showWarning(type) {
-        attemptCount++;
-        
-        // Remove existing notification if any
-        const existing = document.getElementById('security-toast');
-        if (existing) existing.remove();
-        
-        const toast = document.createElement('div');
-        toast.id = 'security-toast';
-        toast.innerHTML = `
-            <style>
-                @keyframes slideInRight {
-                    from {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
-                @keyframes slideOutRight {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                }
-            </style>
-            <div style="
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                padding: 25px 30px;
-                border-radius: 15px;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-                z-index: 999999;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                min-width: 350px;
-                max-width: 90vw;
-                animation: slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            ">
-                <div style="display: flex; align-items: flex-start; gap: 15px;">
-                    <div style="font-size: 2rem; flex-shrink: 0;">🔒</div>
-                    <div style="flex: 1;">
-                        <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; font-weight: 600;">
-                            Security Alert
-                        </h3>
-                        <p style="margin: 0 0 8px 0; font-size: 0.95rem; opacity: 0.95; line-height: 1.5;">
-                            Developer tools are disabled for security purposes.
-                        </p>
-                        <p style="margin: 0; font-size: 0.85rem; opacity: 0.8;">
-                            Attempt #${attemptCount} • ${new Date().toLocaleTimeString()}
-                        </p>
-                    </div>
-                    <button onclick="this.closest('#security-toast').style.animation='slideOutRight 0.3s'; setTimeout(() => { const el = document.getElementById('security-toast'); if(el) el.remove(); }, 300);" style="
-                        background: rgba(255, 255, 255, 0.2);
-                        border: none;
-                        color: white;
-                        width: 28px;
-                        height: 28px;
-                        border-radius: 50%;
-                        cursor: pointer;
-                        font-size: 1.2rem;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-shrink: 0;
-                        transition: all 0.2s;
-                    " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
-                        ✕
-                    </button>
-                </div>
-                <div style="
-                    margin-top: 15px;
-                    padding-top: 15px;
-                    border-top: 1px solid rgba(255, 255, 255, 0.2);
-                    font-size: 0.85rem;
-                ">
-                    <p style="margin: 0;">
-                        📧 Contact: <a href="mailto:calamba.goclinic@gmail.com" style="color: #FFD700; text-decoration: none; font-weight: 600;">calamba.goclinic@gmail.com</a>
-                    </p>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(toast);
-        
-        // Auto remove after 5 seconds
-        setTimeout(() => {
-            const toastEl = document.getElementById('security-toast');
-            if (toastEl) {
-                toastEl.firstElementChild.style.animation = 'slideOutRight 0.3s';
-                setTimeout(() => {
-                    if (document.getElementById('security-toast')) {
-                        toastEl.remove();
-                    }
-                }, 300);
-            }
-        }, 5000);
+/* ==========================================================================
+   GOCLINIC WEBSITE PROTECTION
+   Minimalist — clean toast, top right, single-line contact
+   ========================================================================== */
+
+(function () {
+  'use strict';
+
+  const CONTACT = 'calamba.goclinic@gmail.com';
+  const SUBJECT = 'GoClinic Website Access Concern';
+  let _timer = null;
+
+  _injectStyles();
+
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    _show('Right-click is disabled on this site.');
+    return false;
+  }, { passive: false });
+
+  document.addEventListener('dragstart', function (e) {
+    if (e.target && e.target.tagName === 'IMG') {
+      e.preventDefault();
+      _show('Image saving is disabled.');
+      return false;
     }
-    
-    // Log attempts (optional - for monitoring)
-    if (attemptCount > 5) {
-        console.warn('Multiple DevTools access attempts detected.');
+  }, { passive: false });
+
+  document.addEventListener('keydown', function (e) {
+    const k = (e.key || '').toLowerCase();
+    let msg = '';
+
+    if (e.key === 'F12')                                  msg = 'Developer tools are disabled.';
+    else if (e.ctrlKey && e.shiftKey && k === 'i')        msg = 'Developer tools are disabled.';
+    else if (e.ctrlKey && e.shiftKey && k === 'j')        msg = 'Console access is disabled.';
+    else if (e.ctrlKey && e.shiftKey && k === 'c')        msg = 'Inspect element is disabled.';
+    else if (e.ctrlKey && k === 'u')                      msg = 'View source is disabled.';
+    else if (e.metaKey && e.altKey && 'ijc'.includes(k))  msg = 'Developer tools are disabled.';
+    else if (e.metaKey && k === 'u')                      msg = 'View source is disabled.';
+
+    if (msg) {
+      e.preventDefault();
+      e.stopPropagation();
+      _show(msg);
+      return false;
     }
-    
+  }, { passive: false });
+
+  function _show(message) {
+    let toast = document.getElementById('gc-toast');
+    if (!toast) toast = _build();
+
+    toast.querySelector('.gc-toast-msg').textContent = message;
+    toast.classList.remove('gc-out');
+    toast.classList.add('gc-in');
+    toast.style.pointerEvents = 'auto';
+
+    clearTimeout(_timer);
+    _timer = setTimeout(_hide, 5000);
+  }
+
+  function _hide() {
+    const toast = document.getElementById('gc-toast');
+    if (!toast) return;
+    toast.classList.remove('gc-in');
+    toast.classList.add('gc-out');
+    toast.style.pointerEvents = 'none';
+  }
+
+  function _build() {
+    const toast = document.createElement('div');
+    toast.id = 'gc-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+
+    toast.innerHTML = `
+      <div class="gc-toast-bar"></div>
+      <div class="gc-toast-body">
+        <div class="gc-toast-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="gc-toast-content">
+          <div class="gc-toast-top">
+            <div class="gc-toast-label">Protected</div>
+            <button class="gc-toast-close" type="button" aria-label="Dismiss">&times;</button>
+          </div>
+          <div class="gc-toast-msg">Access is restricted.</div>
+          <a class="gc-toast-link" href="mailto:${CONTACT}?subject=${encodeURIComponent(SUBJECT)}" tabindex="0">Contact us: ${CONTACT}</a>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(toast);
+    toast.querySelector('.gc-toast-close').addEventListener('click', _hide);
+    return toast;
+  }
+
+  function _injectStyles() {
+    if (document.getElementById('gc-toast-css')) return;
+
+    const s = document.createElement('style');
+    s.id = 'gc-toast-css';
+    s.textContent = `
+      #gc-toast {
+        position: fixed;
+        top: 20px;
+        right: 24px;
+        width: 320px;
+        max-width: calc(100vw - 32px);
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow:
+          0 0 0 1px rgba(0,0,0,.06),
+          0 4px 6px -1px rgba(0,0,0,.05),
+          0 16px 32px -4px rgba(0,86,179,.11);
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px) scale(.97);
+        pointer-events: none;
+        z-index: 2147483647;
+        font-family: 'Open Sans', Arial, sans-serif;
+      }
+
+      #gc-toast.gc-in {
+        animation: gc-slide-in .28s cubic-bezier(.16,1,.3,1) forwards;
+      }
+
+      #gc-toast.gc-out {
+        animation: gc-slide-out .2s cubic-bezier(.4,0,1,1) forwards;
+      }
+
+      @keyframes gc-slide-in {
+        from { opacity:0; transform:translateY(-10px) scale(.97); }
+        to   { opacity:1; transform:translateY(0) scale(1); }
+      }
+
+      @keyframes gc-slide-out {
+        from { opacity:1; transform:translateY(0) scale(1); }
+        to   { opacity:0; transform:translateY(-8px) scale(.97); }
+      }
+
+      .gc-toast-bar {
+        height: 3px;
+        background: linear-gradient(90deg, #0056b3, #007bff 55%, #18a0aa);
+      }
+
+      #gc-toast.gc-in .gc-toast-bar {
+        animation: gc-progress 5s linear forwards;
+      }
+
+      @keyframes gc-progress {
+        from { transform: scaleX(1); transform-origin: left; }
+        to   { transform: scaleX(0); transform-origin: left; opacity: .5; }
+      }
+
+      .gc-toast-body {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 14px 15px 14px;
+      }
+
+      .gc-toast-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: #eef4ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #0056b3;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .gc-toast-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .gc-toast-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 3px;
+      }
+
+      .gc-toast-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #0056b3;
+      }
+
+      .gc-toast-close {
+        width: 22px;
+        height: 22px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: #9ca3af;
+        font-size: 17px;
+        line-height: 1;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        flex-shrink: 0;
+        transition: background .15s, color .15s;
+      }
+
+      .gc-toast-close:hover {
+        background: #f3f4f6;
+        color: #374151;
+      }
+
+      .gc-toast-msg {
+        font-size: 13px;
+        font-weight: 600;
+        color: #111827;
+        line-height: 1.4;
+        margin-bottom: 7px;
+      }
+
+      .gc-toast-link {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        color: #0056b3;
+        text-decoration: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-bottom: 1px solid rgba(0,86,179,.2);
+        padding-bottom: 1px;
+        width: fit-content;
+        max-width: 100%;
+        transition: color .15s, border-color .15s;
+      }
+
+      .gc-toast-link:hover {
+        color: #003f87;
+        border-color: #003f87;
+      }
+
+      @media (max-width: 600px) {
+        #gc-toast {
+          top: 14px;
+          right: 10px;
+          left: 10px;
+          width: auto;
+        }
+      }
+    `;
+
+    document.head.appendChild(s);
+  }
+
+  setTimeout(function () {
+    try {
+      console.clear();
+      console.log('%cSTOP', 'font-size:40px;font-weight:900;color:#0056b3;');
+      console.log('%cThis is a browser feature for developers.', 'font-size:14px;color:#374151;');
+      console.log('%cIf someone told you to paste code here — it is a scam. Close this immediately.', 'font-size:13px;color:#b42318;font-weight:700;');
+      console.log('\n%cQuestions? ' + CONTACT, 'font-size:12px;color:#0056b3;');
+    } catch (_) {}
+  }, 900);
+
 })();
