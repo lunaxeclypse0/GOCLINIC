@@ -3,18 +3,26 @@
 
   <url>
     <loc>https://goclinic.ph/</loc>
+    <lastmod>2026-04-06</lastmod>
+    <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://goclinic.ph/about.html</loc>
+    <lastmod>2026-04-06</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://goclinic.ph/services.html</loc>
+    <lastmod>2026-04-06</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://goclinic.ph/contact.html</loc>
+    <lastmod>2026-04-06</lastmod>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
