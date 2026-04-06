@@ -617,7 +617,7 @@
         document.getElementById('about-dropdown').classList.toggle('active');
     }
 
-    window.onclick = function(event) {
+    window.onclick = function(event) { 
         const dropdown = document.getElementById('about-dropdown');
         if (!event.target.matches('.dropdown a') && dropdown.classList.contains('active'))
             dropdown.classList.remove('active');
